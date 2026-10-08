@@ -107,7 +107,7 @@ class InvoiceService {
     const year = new Date().getFullYear();
     const count = await Invoice.count();
     const sequence = String(count + 1).padStart(4, '0');
-    return `INV-${year}-${sequence}`;
+    return `${year}-${sequence}`;
   }
 
   async getAllInvoices(status = '', search = '') {
