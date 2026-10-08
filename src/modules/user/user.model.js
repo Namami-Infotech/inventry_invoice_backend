@@ -36,6 +36,11 @@ const User = sequelize.define('User', {
     allowNull: true,
     defaultValue: ''
   },
+  aadhaar_number: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: null
+  },
   area: {
     type: DataTypes.STRING,
     allowNull: true,

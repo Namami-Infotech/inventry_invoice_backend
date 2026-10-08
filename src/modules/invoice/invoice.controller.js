@@ -68,6 +68,23 @@ class InvoiceController {
     }
   };
 
+  updatePhone = async (req, res) => {
+    try {
+      const { customerPhone, shippingPhone } = req.body;
+      const invoice = await invoiceService.updateInvoicePhone(
+        req.params.id,
+        customerPhone,
+        shippingPhone
+      );
+      if (!invoice) {
+        return res.status(404).json({ success: false, message: 'Invoice not found' });
+      }
+      res.json({ success: true, message: 'Phone number updated successfully', data: invoice });
+    } catch (error) {
+      res.status(500).json({ success: false, message: error.message });
+    }
+  };
+
   delete = async (req, res) => {
     try {
       const success = await invoiceService.deleteInvoice(req.params.id);

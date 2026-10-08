@@ -7,6 +7,7 @@ router.get('/', invoiceController.getAll);
 router.get('/:id', invoiceController.getById);
 router.post('/', invoiceController.create);
 router.patch('/:id/status', invoiceController.updateStatus);
+router.patch('/:id/phone', invoiceController.updatePhone);
 router.delete('/:id', invoiceController.delete);
 
 module.exports = router;

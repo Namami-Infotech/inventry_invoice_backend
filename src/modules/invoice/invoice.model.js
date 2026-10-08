@@ -57,7 +57,111 @@ const Invoice = sequelize.define('Invoice', {
     allowNull: true,
     defaultValue: ''
   },
-    
+  customerStateCode: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+
+  // Consignee (Ship to) details
+  shippingName: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+  shippingAddress: {
+    type: DataTypes.TEXT,
+    allowNull: true,
+    defaultValue: ''
+  },
+  shippingCity: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+  shippingState: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+  shippingStateCode: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+  shippingGstin: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+  shippingPhone: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+
+  // Dispatch / Transport / Reference metadata fields
+  deliveryNote: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+  modeTermsOfPayment: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+  referenceNoDate: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+  otherReferences: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+  buyersOrderNo: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+  orderDate: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+  dispatchDocNo: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+  deliveryNoteDate: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+  dispatchedThrough: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+  destination: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+  termsOfDelivery: {
+    type: DataTypes.TEXT,
+    allowNull: true,
+    defaultValue: ''
+  },
+  companyStateCode: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: ''
+  },
+
   // Snapshot of company data
   companyName: {
     type: DataTypes.STRING,

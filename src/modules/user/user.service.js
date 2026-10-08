@@ -40,17 +40,18 @@ class UserService {
   }
 
   async createUser(data) {
-    const gstVal = data.gstNumber || data.gstin || data.pincode || '';
+    const gstVal = data.gstNumber || data.gstin || data.pincode || data.aadhaar_number || '';
     return await User.create({
       name: data.name,
       role: data.role || 'USER',
-      fullAddress: data.fullAddress || '',
+      fullAddress: data.fullAddress || data.address || '',
       state: data.state || '',
       city: data.city || '',
       gstNumber: gstVal,
+      aadhaar_number: data.aadhaar_number || null,
       area: data.area || '',
       pincode: data.pincode || gstVal,
-      contactNumber: data.contactNumber || '',
+      contactNumber: data.contactNumber || data.mobile || '',
       email: data.email || '',
       status: data.status || 'ACTIVE'
     });
@@ -60,20 +61,21 @@ class UserService {
     const user = await User.findByPk(id);
     if (!user) return null;
 
-    const gstVal = data.gstNumber !== undefined 
-      ? data.gstNumber 
-      : (data.gstin !== undefined ? data.gstin : (data.pincode !== undefined ? data.pincode : user.gstNumber));
+    const gstVal = data.gstNumber !== undefined
+      ? data.gstNumber
+      : (data.gstin !== undefined ? data.gstin : (data.pincode !== undefined ? data.pincode : (data.aadhaar_number !== undefined ? data.aadhaar_number : user.gstNumber)));
 
     return await user.update({
       name: data.name !== undefined ? data.name : user.name,
       role: data.role !== undefined ? data.role : user.role,
-      fullAddress: data.fullAddress !== undefined ? data.fullAddress : user.fullAddress,
+      fullAddress: data.fullAddress !== undefined ? data.fullAddress : (data.address !== undefined ? data.address : user.fullAddress),
       state: data.state !== undefined ? data.state : user.state,
       city: data.city !== undefined ? data.city : user.city,
       gstNumber: gstVal,
+      aadhaar_number: data.aadhaar_number !== undefined ? data.aadhaar_number : user.aadhaar_number,
       area: data.area !== undefined ? data.area : user.area,
       pincode: data.pincode !== undefined ? data.pincode : (gstVal || user.pincode),
-      contactNumber: data.contactNumber !== undefined ? data.contactNumber : user.contactNumber,
+      contactNumber: data.contactNumber !== undefined ? data.contactNumber : (data.mobile !== undefined ? data.mobile : user.contactNumber),
       email: data.email !== undefined ? data.email : user.email,
       status: data.status !== undefined ? data.status : user.status
     });
